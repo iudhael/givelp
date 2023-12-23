@@ -1,0 +1,23 @@
+.input-form{
+    _padding-top: 10px;
+    _padding-bottom: 10px;
+    border-radius: 8px;
+    border: 2px solid rgb(143, 140, 140);
+    width: 100%;
+
+    background-color: #f1eded;
+}
+
+.input_password{
+    border-top: 2px solid rgb(143, 140, 140);
+    border-right: 2px solid rgb(143, 140, 140);
+    border-bottom: 2px solid rgb(143, 140, 140);
+    background-color: rgb(143, 140, 140);
+}
+
+
+.form-slide {
+    display: none;
+}
+
+

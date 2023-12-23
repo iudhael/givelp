@@ -1,0 +1,63 @@
+{% load static %}
+
+
+
+<footer class="mt-5  ">
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><h3><i class="fa-solid fa-chevron-up"></i></h3></button>
+
+
+    <div class="">
+        {% if partenaires %}
+        <div class="mt-2  border-top-footer1 partenaire-bloc px-2">
+                <div class="row m-4">
+                    <div class="col-md-2 mb-2  text-center  d-flex justify-content-around align-items-center ">
+                        Trusted by
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row row-cols-3 row-cols-sm-5 row-cols-md-5 row-cols-lg-5 row-cols-xl-6   d-flex justify-content-around ">
+                            {% for partenaire in partenaires %}
+                                <div class=" text-center mb-2">
+                                    <!--<img src="{{ partenaire.logo_partenaire.url }}" alt="" class="img-thumbnail">-->
+                                    Partenaire {{ forloop.counter }}
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        {% endif %}
+
+
+        <div class=" d-flex justify-content-between border-top-footer2 px-4 py-4 ">
+            <div class="text-dark mt-auto mb-auto ">
+                LOGO
+            </div>
+
+            <div class="text-dark mt-auto mb-auto ">
+                2023 GIVELP | copywriting
+            </div>
+
+            <div class="d-flex">
+                <div >
+                    <a href="#">
+                        <h5><i class="fa-brands fa-facebook text-dark"></i></h5>
+                    </a>
+                </div>
+                <div class="px-2">
+                    <a href="#">
+                        <h5><i class="fa-brands fa-instagram text-dark"></i></h5>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                    <h5><i class="fa-brands fa-linkedin text-dark"></i></h5>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

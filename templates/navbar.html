@@ -1,0 +1,77 @@
+{% load static %}
+
+<header>
+    <nav class="navbar navbar-expand-lg  pt-4 pb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">GIVELP</a>
+
+            <button class="navbar-toggler navbar-light bg-white" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul class="navbar-nav m-auto ">
+                    <li class="nav-item {% if  navbar == 'home' %} active {% endif %}">
+                        <a class="nav-link text-white" href="{% url 'catalogue:home' %}">Home </a>
+                    </li>
+
+
+                    <li class="nav-item {% if  navbar == 'about' %} active {% endif %}">
+                        <a class="nav-link text-white" href="{% url 'catalogue:about' %}">About us </a>
+                    </li>
+
+
+                    <li class="nav-item {% if  navbar == 'ouroffer' %} active {% endif %}">
+                        <a class="nav-link text-white" href="{% url 'catalogue:home-catalogue' %}">Our offer </a>
+                    </li>
+
+
+                    {% if user.is_authenticated and user.managerinfo.entreprise_manager %}
+                    <li class="nav-item {% if  navbar == 'demandes' %} active {% endif %}">
+                        <a class="nav-link text-white " href="{% url 'entreprise_manager:demande-stage' %}">
+                            
+                        Demandes
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <ul class="navbar-nav ">
+                    <div class="d-flex">
+                        {% if  not user.is_authenticated %}
+                            <li class="nav-item rounded-login text-center {% if  navbar == 'login' %} active {% endif %}">
+
+                                    <a class="nav-link text-white  " href="{% url 'authentification:login' %}">Log in </a>
+
+                            </li>
+
+                            <li class="nav-item rounded-sigin  text-center {% if  navbar == 'register' %} active {% endif %}">
+
+                                    <a class="nav-link text-white  " href="{% url 'authentification:register' %}">Sign up </a>
+
+                            </li>
+                        {% else %}
+
+                            <li class="nav-item {% if  navbar == 'profil' %} active {% endif %}">
+                                <a class="nav-link text-white " href="{% url 'authentification:profile' %}">
+                                <i class="fa-solid fa-user text-white"></i>
+                                {{ user.username }}
+                                </a>
+                            </li>
+                            <li class="nav-item "><a class="nav-link text-white" href="{% url 'authentification:logout' %}">
+                                <i class="fa-solid fa-power-off text-white"></i>
+                                LogOut
+                                </a>
+                            </li>
+                        {% endif %}
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+

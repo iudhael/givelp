@@ -1,0 +1,12 @@
+asgiref
+crispy-bootstrap5
+Django
+django-crispy-forms
+django-session-timeout
+django-social-share
+django_debug_toolbar
+mysqlclient
+Pillow
+Pillow-PIL
+six
+sqlparse

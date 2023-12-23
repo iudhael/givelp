@@ -1,0 +1,74 @@
+.bloc-detail{
+    
+    background: linear-gradient(135deg, #e6e0e0, white);
+    border-radius: 15px;
+    
+}
+
+.entrerpise-name{
+    font-size: 3.5rem;
+    font-weight: 700;
+    
+}
+
+h4{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.bouton{
+    background: linear-gradient(135deg, #FE451E , 10%, #FD7E37);
+    border: none;
+}
+
+.bouton-form{
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: #FD7E37;
+    
+}
+
+@media (max-width: 768px) {
+    .entrerpise-name{
+        font-size: 3rem;
+        font-weight: 700;
+        
+    }
+
+}
+
+
+
+
+
+.select-form{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    border: 2px solid rgb(143, 140, 140);
+    width: 100%;
+
+    background-color: #f1eded;
+
+}
+
+.bloc-form{
+    border: 2px rgb(143, 140, 140) solid;
+    border-radius: 20px;
+}
+.bloc-form-radio{
+    border: 2px rgb(143, 140, 140) solid;
+    border-radius: 20px;
+    background-color: #e6e0e0;
+    
+}
+.texte{
+    font-size: 2rem;
+}
+
+.radio{
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    
+}
