@@ -1,0 +1,60 @@
+
+    {% include 'catalogue/search_form_modele.html' %}
+
+    {% if modele_categories|length_is:"0" %}
+        <div class="text-center">
+            Palsambleu ! Nous n'avons trouvé aucun résultat à cette requête. Même pas de quoi se ronger la chique !
+            Partez de nouveau à l'abordage !
+        </div>
+    {% else %}
+
+    <div class="col-lg-12" id="modele_serarch">
+
+        <h2 class="intro-text text-center text-uppercase" >{{ list_title }}</h2>
+
+    </div>
+    <div class="mb-5 container ">
+        <div class="row m-5 d-flex justify-content-around">
+            {% for modele_categorie in modele_categories %}
+                <div class="col-md-10 mb-5 p-4 ">
+                    <h1 class="entrerpise-name">{{ modele_categorie.nom_modele }}</h1>
+                    <p>poster 1 day ago</p>
+                    <h4>EXPERIENCE LEVEL</h4>
+                    <p>{{ modele_categorie.experience_level }}</p>
+                    <h4>job description</h4>
+                    <p>{{ modele_categorie.short_job_description }}</p>
+                    <a href="{% url 'catalogue:detail_modele' detail_modele_id=modele_categorie.id %}">
+                        <button class="btn text-white bouton">View</button>
+                    </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+            {% if paginate %} <!--empecher la barre de navigation d'apparaitre si la pagination n'est pas activer-->
+
+                <div class="clearfix"></div>
+                <nav class="mt-5 mb-5 text-center container" aria-label="...">
+                    <div class="pager d-flex justify-content-around">
+                        {% if modele_categories.has_previous %}
+                            <a class="" href="?page={{ modele_categories.previous_page_number }}#ermopastry">
+                                <button class="btn btn-warning">
+                                    Précédent
+                                </button>
+                            </a>
+                        {% endif %}
+
+                        {% if modele_categories.has_next %}
+                            <a href="?page={{ modele_categories.next_page_number }}#ermopastry">
+                                <button class="btn btn-warning">
+                                    Suivant
+                                </button>
+                            </a>
+                        {% endif %}
+                    </div>
+                </nav>
+
+            {% endif %}
+        </div>
+    {% endif %}
+

@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    signUp
+{% endblock %}
+
+
+
+{% block content %}
+<div  class="" id="register">
+
+</div>
+
+
+    <div class="container mt-5">
+
+        <div class="row m-2 d-flex justify-content-around">
+            <i class="fa-solid fa-user" style="font-size:6rem; color: rgb(143, 140, 140);"></i>
+
+            <div class="mt-5 col-md-5">
+                <!--
+                <form method="POST"  class="form-group" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                    <div class="row d-flex justify-content-between mb-4">
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4 card-header text-center text-uppercase">REGISTER</legend>
+                            <div class="col-md-12 mb-4">
+                                {{ form.first_name|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-12 mb-4">
+                                {{ form.last_name|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-12 mb-4">
+                                {{ form.username|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-12 mb-4 ">
+                                {{ form.email|as_crispy_field }}
+
+                            </div>
+
+
+
+                            <div class="col-md-12 mb-4">
+                                {{ form.password1|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-12 mb-4">
+                                {{ form.password2|as_crispy_field }}
+
+                            </div>
+
+                            <div class="col-md-12 mb-4">
+                                {{ form_info.cv|as_crispy_field }}
+
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                {{ form_info.lettre_motivation|as_crispy_field }}
+
+                            </div>
+
+
+
+                        </fieldset>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn bouton-form text-white">Send</button>
+
+                                </div>
+
+                    </div>
+                </form>
+
+                    <div class="mt-4 mb-2 d-flex justify-content-between ">
+                        <div class="mt-4 mb-2 ">
+                            Vous avez  un compte ! <a class="btn btn-primary" href="{% url 'authentification:login' %}#login">Login</a>
+                        </div>-->
+                        <!--{% if  not email_envoyer %}-->
+                            <!--<div class="mt-4 mb-2">
+                                <a href="{% url 'authentification:resend-confirmation-email' %}">
+                                    <button class="btn  btn-warning">Resend email</button>
+                                </a>
+                            </div>-->
+                        <!--{% endif %}-->
+                    <!--</div>-->
+
+
+                <form method="POST"  class="form-group " enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row d-flex  mb-4">
+                        <legend class="border-bottom mb-4 card-header text-center text-uppercase">Inscription</legend>
+                            
+                            <div class="form-slide">
+                                <div class="col-md-12 mb-4">
+                                    {{ form.first_name|as_crispy_field }}
+    
+                                </div>
+    
+                                <div class="col-md-12 mb-4">
+                                    {{ form.last_name|as_crispy_field }}
+    
+                                </div>
+
+                                <div class="col-md-12 mb-4">
+                                    {{ form.username|as_crispy_field }}
+    
+                                </div>
+    
+                                <div class="col-md-12 mb-4 ">
+                                    {{ form.email|as_crispy_field }}
+    
+                                </div>
+                            </div>
+
+                            <div class="form-slide">
+                                <div class="col-md-12 mb-4">
+                                    {{ form.password1|as_crispy_field }}
+    
+                                </div>
+    
+                                <div class="col-md-12 mb-4">
+                                    {{ form.password2|as_crispy_field }}
+    
+                                </div>
+
+                                <div class="col-md-12 mb-4">
+                                    {{ form_info.cv|as_crispy_field }}
+    
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    {{ form_info.lettre_motivation|as_crispy_field }}
+    
+                                </div>
+                            </div>
+                        
+                            <div class="form-slide">
+                                
+                                <div class="col-md-12 mb-4">
+                                    <img src="{% static 'img/carte.jpeg' %}" class="img-fluid" alt="">
+    
+                                </div>
+
+                                <div class="col-md-12 mb-4">
+                                    {{ form_info.img_verify|as_crispy_field }}
+    
+                                </div>
+
+                                                        
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn bouton-form text-white">Envoyer</button>
+
+                                </div>
+                            </div>
+
+                    </div>
+                </form>
+                
+                <div class="d-flex justify-content-around">
+                    <div>
+                        <button class="prev-btn btn btn-outline-dark" onclick="prevSlide()">Précédent</button>
+                    
+                    </div>
+                    <div>
+                       
+                        <button class="next-btn btn btn-outline-dark" onclick="nextSlide()">Suivant</button>
+                    </div>
+                </div>
+
+
+                <div class="mt-4 mb-2 d-flex justify-content-between ">
+                    <div class="mt-4 mb-2 ">
+                        Vous avez  un compte ! <a class="btn btn-primary" href="{% url 'authentification:login' %}#login">Connexion</a>
+                    </div>
+                    <!--{% if  not email_envoyer %}-->
+                        <div class="mt-4 mb-2">
+                            <a href="{% url 'authentification:resend-confirmation-email' %}">
+                                <button class="btn  btn-warning">Renvoyer le mail</button>
+                            </a>
+                        </div>
+                    <!--{% endif %}-->
+                </div>
+
+
+   
+            
+            
+            
+            </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+   
+
+        
+{% endblock %}

@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block content %} 
+    <div class="mb-5 container">
+        <div class="row row-cols-md-3 m-2 d-flex justify-content-around">
+            {% for categorie in categorie_objs %}
+                <div class="  mb-4">
+                    <a class="text-decoration-none" href="{% url 'catalogue:detail_categorie' detail_categorie_id=categorie.id %}">
+                        <h1 class="text-dark">{{ categorie.nom_categorie }}</h1>
+                        <img src="{{ categorie.image_categorie.url }}" alt="1" class="img-fluid">
+                    </a>
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mt-5 mb-5 text-center">
+        <a href="{% url 'catalogue:home-catalogue' %}">
+            <button class="btn bouton-form text-white">
+                View All
+            </button>
+        </a>
+    </div>
+
+
+{% endblock %} 

@@ -1,0 +1,157 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <div class="container mt-5">
+        <div class="row">
+          
+          <h2>Demandes non definis</h2>
+          {% if not demande_non_definis|length_is:"0"%} 
+            <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Entreprise</th>
+                      <th scope="col">Date d'envoi</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Modifier</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for demande in demande_non_definis %}
+                        <tr>
+                          <td><div><p>{{ forloop.counter }}</p></div></td>
+                          <td><div><p>{{ demande.entreprise }}</p></div></td>
+                          <td><div><p>{{ demande.created_at }}</p></div></td>
+                          <td><div><p>{{ demande.status_demande }}</p></div></td>
+                          <td>
+                            <div class="">
+                              <form method="POST"  class="form-group">
+                                {% csrf_token %}
+                        
+                                <div class="d-flex justify-content-between">
+                                  <div class="d-flex">
+
+                                    <div class="col-md-12 ">
+                                      {{ form.status_demande|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="hidden" name="demande_pk" class="form-control" value="{{ demande.pk }}">
+                                    </div>
+                                  </div>
+                    
+                                  <div class="border">
+                                      <button type="submit" class="btn btn-success">Send</button>
+                    
+                                  </div>
+                                </div>
+                              
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                   {% endfor %}
+    
+                  </tbody>
+                </table>
+            </div>
+          {% else %}
+            <h5 class="text-center">Aucune demande ayant pour status non-defini</h5>
+          {% endif %}
+        </div>
+    
+        <div class="row">
+          <h2>Demandes acceptées</h2>
+          {% if not demande_acceptes|length_is:"0"%}
+            <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Entreprise</th>
+                      <th scope="col">Date d'envoi</th>
+                      <th scope="col">Status</th>
+                      
+                      
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for demande in demande_acceptes %}
+                        <tr>
+                            <td><div><p>{{ forloop.counter }}</p></div></td>
+                            <td><div><p>{{ demande.entreprise }}</p></div></td>
+                            <td><div><p>{{ demande.created_at }}</p></div></td>
+                            <td><div><p>{{ demande.status_demande }}</p></div></td>
+
+
+                          
+                        </tr>
+    
+                    {% endfor %}
+    
+                  </tbody>
+                </table>
+            </div>
+          {% else %}
+            <h5 class="text-center">Aucune demande ayant pour status accepté</h5>
+          {% endif %}
+        
+        </div>
+    
+        <div class="row">
+          <h2>Demandes refusées</h2>
+          {% if not demande_refuses|length_is:"0"%} 
+            <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Entreprise</th>
+                      <th scope="col">Date d'envoi</th>
+                      <th scope="col">Status</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for demande in demande_refuses %}
+                        <tr>
+                            <td><div><p>{{ forloop.counter }}</p></div></td>
+                            <td><div><p>{{ demande.entreprise }}</p></div></td>
+                            <td><div><p>{{ demande.created_at }}</p></div></td>
+                            <td><div><p>{{ demande.status_demande }}</p></div></td>
+                          
+                        </tr>
+    
+                   {% endfor %}
+    
+                  </tbody>
+                </table>
+            </div>
+          {% else %}
+            <h5 class="text-center">Aucune demande ayant pour status refusé</h5>
+          {% endif %}
+    
+        </div>
+    
+
+    </div>
+
+
+
+
+ 
+    
+    
+
+{% endblock %} 

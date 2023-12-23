@@ -1,0 +1,106 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+    {% if modele_name.nom_modele == '' %}
+            {{ modele_name.categorie }}
+
+    {% else %}
+
+            {{ modele_name.nom_modele }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+    {% if details_modeles|length_is:"0" %}
+        <div class="text-center">
+            Palsambleu ! Nous n'avons trouvé aucun résultat à cette requête. Même pas de quoi se ronger la chique !
+            Partez de nouveau à l'abordage !
+        </div>
+    {% else %}
+
+    <div class="container ">
+        <div class="row m-2 d-flex justify-content-around">
+            {% for details_modele in details_modeles %}
+                <div class="col-md-12 p-4 ">
+                    <div>logo</div>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 mb-2">
+                        <div class="">
+                            <h1 class="entrerpise-name">{{ details_modele.nom_modele }}</h1>
+                        </div>
+                        <div class="pt-3">
+                            <a href="">
+                                <button class="btn text-white bouton-form">Postulez ici !</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p>poster 1 day ago</p>
+                    <h4>EXPERIENCE LEVEL</h4>
+                    <p>{{ details_modele.experience_level }}</p>
+                    <h4>job description</h4>
+                    <p>{{ details_modele.job_description }}</p>
+
+                    <div class="mt-5">
+                        <form method="POST" enctype="multipart/form-data" class="form-group" >
+                            {% csrf_token %}
+                            <div class="col-md-10 m-auto  p-5 d-flex justify-content-around bloc-form">
+
+                                <div class="row d-flex justify-content-around">
+
+                                    <div class="col-md-12   mb-4">
+
+                                        <select class="form-select select-form" name="select">
+                                            <option selected>Choose...</option>
+                                            <option >option1</option>
+                                            <option >option2</option>
+                                            <option >option3</option>
+                                            <option >option4</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="row  d-flex justify-content-around ">
+                                        <div class="col-md-5  bloc-form-radio mt-3 p-3 ">
+                                            <div class="d-flex justify-content-end mb-3">
+                                                <input class="radio "  type="radio" name="radio" id="radio1" value="I am a..., looking for academic jobs">
+                                            </div>
+                                            <div class="">
+                                                <h5 class="texte">I am a..., looking for academic jobs</h5>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-5 bloc-form-radio mt-3 p-3 ">
+                                            <div class=" d-flex justify-content-end mb-3">
+                                                <input class="radio"  type="radio" name="radio" id="radio2" value="I am a..., looking for professional jobs">
+                                            </div>
+                                            <div class="">
+                                                <h5 class="texte">I am a..., looking for professional jobs</h5>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class=" text-center ml-auto mr-auto mt-5">
+                                        <button type="submit" class="btn bouton-form text-white">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endif %}
+
+
+{% endblock %} 

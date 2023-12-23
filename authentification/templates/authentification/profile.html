@@ -1,0 +1,190 @@
+
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="content-section container shadow p-2 mt-5" id="profile">
+        
+        <div class="media">
+
+
+            <div class="media-body container m-auto text-center ">
+                <p class="account-heading">{{ user.username }}</p>
+                <p class="text-secondary  test">{{ user.first_name }} {{ user.last_name }}</p>
+                <p class="text-secondary">{{ user.email }}</p>
+
+            </div>
+
+        </div>
+
+    <div class="mask mb-5 mt-5 d-flex align-items-centerbg-dark h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card " style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset class="form_group">
+                                    <legend class="border-bottom mb-4">Profil Info</legend>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {{ user_form.first_name|as_crispy_field }}
+
+                                            </div>
+                                            <div class="col-12">
+                                                {{ user_form.last_name|as_crispy_field }}
+
+                                            </div>
+                                            <div class="col-12">
+                                                {{ user_form.username|as_crispy_field }}
+
+                                            </div>
+                                            <div class="col-12">
+                                                {{ user_form.email|as_crispy_field }}
+
+                                            </div>
+                                            <div class="col-12">
+                                                {{ user_lettre_form.cv|as_crispy_field }}
+
+                                            </div>
+                                            <div class="col-12">
+                                                {{ user_lettre_form.lettre_motivation|as_crispy_field }}
+
+                                            </div>
+
+                                        </div>
+                                </fieldset>
+                                <div class="form-group">
+                                    <button class="btn  btn-success" type="submit">Update</button>
+
+                                    <a class="btn  btn-warning" href="{% url 'password_reset' %}">Reset password here</a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+      
+      <h2>Demandes non definis</h2>
+      {% if not demande_non_definis|length_is:"0"%} 
+        <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Entreprise</th>
+                  <th scope="col">Date d'envoi</th>
+                  <th scope="col">Status</th>
+                  
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for demande in demande_non_definis %}
+                    <tr>
+                      <td><div><p>{{ forloop.counter }}</p></div></td>
+                      <td><div><p>{{ demande.entreprise }}</p></div></td>
+                      <td><div><p>{{ demande.created_at }}</p></div></td>
+                      <td><div><p>{{ demande.status_demande }}</p></div></td>
+                    </tr>
+               {% endfor %}
+
+              </tbody>
+            </table>
+        </div>
+      {% else %}
+        <h5 class="text-center">Aucune demande ayant pour status non-defini</h5>
+      {% endif %}
+    </div>
+
+    <div class="row">
+      <h2>Demandes acceptées</h2>
+      {% if not demande_acceptes|length_is:"0"%}
+        <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Entreprise</th>
+                  <th scope="col">Date d'envoi</th>
+                  <th scope="col">Status</th>
+                  
+                  
+                  
+                </tr>
+              </thead>
+              <tbody>
+                {% for demande in demande_acceptes %}
+                    <tr>
+                        <td><div><p>{{ forloop.counter }}</p></div></td>
+                        <td><div><p>{{ demande.entreprise }}</p></div></td>
+                        <td><div><p>{{ demande.created_at }}</p></div></td>
+                        <td><div><p>{{ demande.status_demande }}</p></div></td>
+
+
+                      
+                    </tr>
+
+                {% endfor %}
+
+              </tbody>
+            </table>
+        </div>
+      {% else %}
+        <h5 class="text-center">Aucune demande ayant pour status accepté</h5>
+      {% endif %}
+    
+    </div>
+
+    <div class="row">
+      <h2>Demandes refusées</h2>
+      {% if not demande_refuses|length_is:"0"%} 
+        <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Entreprise</th>
+                  <th scope="col">Date d'envoi</th>
+                  <th scope="col">Status</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for demande in demande_refuses %}
+                    <tr>
+                        <td><div><p>{{ forloop.counter }}</p></div></td>
+                        <td><div><p>{{ demande.entreprise }}</p></div></td>
+                        <td><div><p>{{ demande.created_at }}</p></div></td>
+                        <td><div><p>{{ demande.status_demande }}</p></div></td>
+                      
+                    </tr>
+
+               {% endfor %}
+
+              </tbody>
+            </table>
+        </div>
+      {% else %}
+        <h5 class="text-center">Aucune demande ayant pour status refusé</h5>
+      {% endif %}
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

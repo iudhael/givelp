@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}
+    About
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row mb-2">
+            <div class="">
+                <h1 class="">Qui somme nous ?</h1>
+                <h4 class="">GIVELP</h4>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-7 d-flex align-items-center order-md-1 order-lg-1 order-last">
+                <p class="">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+            <div class="col-md-5  order-md-2 order-lg-2 ">
+                <img  class="img shadow-lg rounded img-fluid " src="{% static 'img/team1.jpg' %}" alt="team">
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="text-end">
+                <h1 class="">Pourquoi cette plateforme ?</h1>
+                <h4 class="">Faciliter l'acces aux stages et insertions professionnelles</h4>
+            </div>
+        </div>
+        <div class="row mb-5 ">
+            <div class="col-md-5 ">
+                <img class="img shadow-lg rounded img-fluid" src="{% static 'img/team2.jpg' %}" alt="team">
+            </div>
+            <div class="col-md-7 d-flex align-items-center">
+                <p class="">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

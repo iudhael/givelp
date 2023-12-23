@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+
+
+{% block content %}
+<div  class="" id="register">
+
+</div>
+
+
+    <div class="container mt-5">
+        <div class="row m-2 d-flex justify-content-around">
+            <i class="fa-solid fa-user" style="font-size:6rem; color: rgb(143, 140, 140);"></i>
+
+            <div class="mt-5 col-md-5">
+                <form method="POST" enctype="multipart/form-data" class="form-group" >
+                    {% csrf_token %}
+                    <div class="row d-flex justify-content-between mb-4">
+
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4 card-header text-center text-uppercase">Connexion</legend>
+                                    <div class="col-md-12 mb-4">
+                                        <input class="form-control input-form" autocomplete="off" type="text" id="username" name="username" placeholder="your username" required>
+                                    </div>
+
+                                    <div class="col-12 text-white text-center">
+                                        <!--<label for="password">Password*</label>-->
+                                        <div class="input-group">
+                                            <input class="form-control input-form" style="" type="password" name="password" id="password" placeholder="your password" required>
+                                            <div class="input-group-text input_password" style="border-top: 2px solid rgb(143, 140, 140);border-right: 2px solid rgb(143, 140, 140); border-bottom: 2px solid rgb(143, 140, 140); background-color: rgb(143, 140, 140);"  onclick="password_show_hide();">
+                                                    <i class="fas fa-eye text-white" id="show_eye" width="20px"></i>
+                                                    <i class="fas fa-eye-slash text-white d-none " width="20px" id="hide_eye"></i>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <input class="form-check-input" type="checkbox" id="remember_me" name="remember_me"> <label for="remember_me">Se rappeler de moi</label>
+                                    </div>
+                            </fieldset>
+                            <div class="form-group mt-4">
+                                <button class="btn  bouton-form text-white" type="submit">Connexion</button>
+
+                            </div>
+
+                    </div>
+                </form>
+
+                <div class="text-white mt-4 mb-2 d-flex justify-content-between ">
+                    <div class="text-dark">
+                        Pas de compte ! <a class="btn btn-primary" href="{% url 'authentification:register' %}#register">Inscription</a>
+                    </div>
+                    <div class="">
+                        <a class="btn btn-secondary" href="{% url 'password_reset' %}">Password forget </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+        
+
+   
+{% endblock %}
